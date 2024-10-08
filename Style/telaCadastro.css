@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #2A1BB7;
+    color: #ffff;
+    display: flex;
+    justify-content: center;
+}
+
+#container {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h1 {
+    font-family: 'Inria Serif', serif;
+    font-size: 30px;
+    margin-top: 35px;
+}
+
+#container_cadastro {
+    width: 59vw;
+    height: 65vh;
+    border: 2px solid #ffff;
+    border-radius: 10px;
+}
+
+#text-cadastro {
+    font-family: 'Afacad', sans-serif;
+    font-size: 25px;
+    margin-top: 55px;
+    margin-left: 55px;
+}
+
+#cadastros {
+    display: flex;
+    justify-content: space-between;
+}
+
+#cadastro_part1{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 55px;
+}
+
+#cadastro_part2 {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-end;
+    margin-right: 55px;
+}
+
+input {
+    width: 320px;
+    height: 29px;
+    border: 2px solid #6459CA;
+    border-radius: 12px;
+    background-color: #DCD9F6;
+    margin-top: 12px;
+}
+input::placeholder {
+    color: #6459CA;
+    padding: 10px;
+}
+
+#button {
+    display: flex;
+    justify-content: center;
+    margin-top: 55px;
+}
+
+button {
+    font-family: 'Afacad', sans-serif;
+    font-size: 18px;
+    border: 2px solid #DCD9F6;
+    border-radius: 7px;
+    background-color: #6459CA;
+    color: #DCD9F6;
+    width: 112px;
+    height: 30px;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Página de Cadastro</title>
+        <link rel="stylesheet" href="../Style/telaCadastro.css">
+        <!--Link da fonte do título-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@1,700&display=swap" rel="stylesheet">
+        <!--Fonte texto cadastro e botão criar conta-->
+        <link href="https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div id="container">
+            <h1>Vibesound</h1>
+            <div id="container_cadastro">
+                <p id="text-cadastro">Cadastro</p>
+                <div id="cadastros">
+                    <div id="cadastro_part1">
+                        <input type="text" placeholder="Nome completo" required>
+                        <input type="text" placeholder="Data de nascimento" required>
+                        <input type="text" placeholder="Telefone" required>
+                    </div>
+                    <div id="cadastro_part2">
+                        <input type="text" placeholder="Email" required>
+                        <input type="text" placeholder="Confirmar email" required>
+                        <input type="password" placeholder="Senha" required>
+                        <input type="password" placeholder="Confirmar senha" required>
+                    </div>
+                </div>
+                <div id="button">
+                    <button onclick="criarConta()">Criar conta</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
