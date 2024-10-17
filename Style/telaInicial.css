@@ -9,6 +9,7 @@ body {
     display: flex;
     justify-content: center;
 }
+
 /* Área dos botões: "tudo", "música" e "podcasts"*/
 #container_buttons {
     margin: 45px;
