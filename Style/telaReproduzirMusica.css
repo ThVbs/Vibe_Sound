@@ -12,20 +12,58 @@ body {
 
 #container {
     border: 2px solid #DCD9F6; /* Mantém a borda sólida */
-    background-color: rgba(220, 217, 246, 0.5); /* Fundo semi-transparente */
+    background-color: rgba(105, 88, 255, 0.5); /* Fundo semi-transparente */
     width: 50vw;
-    height: 100vh;
+    height: 99vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
 
+/* Área nome pasta */
 #nome_pasta {
-    
+    font-family: 'Afacad', sans-serif;
+    font-size: 25px;
+    margin-top: 20px;
+}
+
+/* Área das informações da música reproduzida */
+#img_play {
+    margin-top: 20px;
+    width: 28vw;
+    height: 57vh;
+}
+#nome_musica {
+    font-family: 'Afacad', sans-serif;
+    font-size: 21px;
+}
+#nome_cantor {
+    font-size: 19px;
+}
+
+/* Área play */
+#play {
+    display: flex;
+    justify-content: space-between;
+    width: 27vw;
+    height: 8vh;
+    margin-top: 15px;
 }
 
 #all_icons {
-    width: 20px;
-    height: 20px;
+    width: 40px;
+    height: 40px;
+} 
+#linha {
+    width: 27vw;
+    height: 2px; /* Espessura da linha */
+    background-color: #ffff; /* Cor da linha */
+    margin-top: 8px; /* Ajuste o espaçamento da linha */
+}
+
+#tempo_musica {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    width: 27vw;
 }
