@@ -10,7 +10,7 @@ body {
     justify-content: center;
 }
 
-#container_login {
+#container {
     width: 23vw;
     height: 70vh;
     border: 2px solid #ffff;
@@ -28,7 +28,7 @@ h1 {
     margin-top: 35px;
 }
 
-#text-entrar {
+#text {
     margin-top: 60px;
     margin-left: 5px;
     font-family: 'Afacad', sans-serif;
@@ -41,13 +41,13 @@ h1 {
     flex-direction: column;
 }
 
-#container_senha {
+.container_senha {
     position: relative;
     display: flex;
     align-items: baseline
 }
 
-#icon_senha {
+#icon_password, #icon_confirm_password {
     cursor: pointer;
 }
 
@@ -72,20 +72,34 @@ a {
 }
 
 /* Área de acesso */
-#container_access {
-    margin-top: 50px;
+#container_buttons {
+    width: 22vw;
+    height: 70vh;
     display: flex;
-    align-items: center;
-    flex-direction: column;
+    align-items: flex-end;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
 }
 
-button {
+#button_salvar {
     border: 2px solid #DCD9F6;
     border-radius: 7px;
     background-color: #6459CA;
     color: #DCD9F6;
     font-family: 'Afacad', sans-serif;
+    font-size: 16px;
+    width: 138px;
+    height: 27px;
+}
+
+#button_cancelar {
+    border: 2px solid #6459CA;
+    border-radius: 7px;
+    background-color: #DCD9F6;
+    color: #6459CA;
+    font-family: 'Afacad', sans-serif;
     font-size: 17px;
-    width: 108px;
-    height: 29px;
+    width: 90px;
+    height: 27px;
 }

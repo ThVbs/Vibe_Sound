@@ -17,12 +17,15 @@
     <body>
         <div id="container_login">
             <h1>Vibesound</h1>
-            <p id="text-entrar">Entrar</p>
             <div id="container_inputs">
+                <p id="text-entrar">Entrar</p>
                 <input type="text" placeholder="Nome de usuário" required>
-                <input type="password" placeholder="Senha" required>
-                <a href="#">Esqueci a senha</a>
-            </div>
+                <div id="container_senha">
+                    <input id="input_senha" type="password" placeholder="Senha" required>
+                    <span id="icon_senha">🙈</span>
+                </div>
+                <a href="./modificarSenha.html">Esqueceu a senha?</a>
+            </div>            
             <div id="container_access">
                 <button id="button_acessar">Acessar</button>
                 <a href="./cadastro.html">Não tenho conta</a>

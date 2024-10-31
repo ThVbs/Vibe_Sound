@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Trocar senha</title>
+        <link rel="stylesheet" href="/Style/telaModificarSenha.css">
+        <!--Link da fonte do título-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@1,700&display=swap" rel="stylesheet">
+        <!--Fonte botão salvar e cancelar-->
+        <link href="https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div id="container">
+            <h1>Vibesound</h1>
+            <div id="container_inputs">
+                <p id="text">Altere sua senha</p>
+                <div class="container_senha">
+                    <input id="input_password" type="password" placeholder="Senha" required>
+                    <span id="icon_password">🙈</span>
+                </div>
+                <div class="container_senha">
+                    <input id="input_confirm_pasword" type="password" placeholder="Senha" required>
+                    <span id="icon_confirm_password">🙈</span>
+                </div>
+            </div>            
+            <div id="container_buttons">
+                <button id="button_cancelar">Cancelar</button>
+                <button id="button_salvar">Salvar nova senha</button>
+            </div>
+        </div>
+
+        <script src="../Script/modificarSenha.js"></script>
+    </body>
+</html>
