@@ -85,7 +85,7 @@ a {
 #button_salvar {
     border: 2px solid #DCD9F6;
     border-radius: 7px;
-    background-color: #6459CA;
+    background-color: #342997;
     color: #DCD9F6;
     font-family: 'Afacad', sans-serif;
     font-size: 16px;
@@ -94,10 +94,10 @@ a {
 }
 
 #button_cancelar {
-    border: 2px solid #6459CA;
+    border: 2px solid #342997;
     border-radius: 7px;
     background-color: #DCD9F6;
-    color: #6459CA;
+    color: #342997;
     font-family: 'Afacad', sans-serif;
     font-size: 17px;
     width: 90px;

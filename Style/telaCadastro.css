@@ -4,7 +4,7 @@
 }
 
 body {
-    background-color: #2A1BB7;
+    background-color: #6656f8;
     color: #ffff;
     display: flex;
     justify-content: center;
@@ -46,27 +46,37 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-left: 55px;
+    margin-left: 40px;
 }
 
 #cadastro_part2 {
     display: flex;
     flex-direction: column; 
-    align-items: flex-end;
-    margin-right: 55px;
+    align-items: flex-start;
+    margin-right: 40px;
+}
+
+.container_senha {
+    position: relative;
+    display: flex;
+    align-items: baseline
+}
+
+#icon_password, #icon_confirm_password {
+    cursor: pointer;
 }
 
 input {
     width: 320px;
     height: 29px;
-    border: 2px solid #6459CA;
+    border: 2px solid #342997;
     border-radius: 12px;
     background-color: #DCD9F6;
     margin-top: 12px;
+    padding-left: 10px; 
 }
 input::placeholder {
     color: #6459CA;
-    padding: 10px;
 }
 
 #button {
@@ -80,7 +90,7 @@ button {
     font-size: 18px;
     border: 2px solid #DCD9F6;
     border-radius: 7px;
-    background-color: #6459CA;
+    background-color: #342997;
     color: #DCD9F6;
     width: 112px;
     height: 30px;
