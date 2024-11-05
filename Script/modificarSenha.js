@@ -29,9 +29,15 @@ buttonCancelar.addEventListener('click', function() {
 
 const buttonSalvar = document.getElementById('button_salvar');
 buttonSalvar.addEventListener('click', function() {
-    if(inputSenha.value === inputConfirmarSenha.value){
+    const senha = inputSenha.value;
+    const senhaConfirmacao = inputConfirmarSenha.value;
+    console.log(senha);
+    
+    if (!senha || !senhaConfirmacao) {
+        alert('Preencha todos os campos');
+      } else if (senha !== senhaConfirmacao) {
+        alert('As senhas precisam ser iguais!');
+      } else {
         window.location.href = 'login.html';
-    } else {
-        alert('As senhas precisam ser iguais!')
-    }
+      }
 });

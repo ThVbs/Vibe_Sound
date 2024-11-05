@@ -79,19 +79,34 @@ input::placeholder {
     color: #6459CA;
 }
 
-#button {
+/* Área dos botões */
+#container_buttons {
+    height: 17vh;
     display: flex;
-    justify-content: center;
-    margin-top: 55px;
+    align-items: flex-end;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
 }
 
-button {
-    font-family: 'Afacad', sans-serif;
-    font-size: 18px;
+#button_salvar {
     border: 2px solid #DCD9F6;
     border-radius: 7px;
     background-color: #342997;
     color: #DCD9F6;
-    width: 112px;
-    height: 30px;
+    font-family: 'Afacad', sans-serif;
+    font-size: 17px;
+    width: 120px;
+    height: 29px;
+}
+
+#button_cancelar {
+    border: 2px solid #342997;
+    border-radius: 7px;
+    background-color: #DCD9F6;
+    color: #342997;
+    font-family: 'Afacad', sans-serif;
+    font-size: 17px;
+    width: 110px;
+    height: 29px;
 }

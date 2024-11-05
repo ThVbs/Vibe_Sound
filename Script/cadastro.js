@@ -52,6 +52,11 @@ iconConfirmarSenha.addEventListener('click', function() {
     }
 });
 
+const buttonCancelar = document.getElementById('button_cancelar');
+buttonCancelar.addEventListener('click', function() {
+    window.location.href = 'login.html';
+});
+
 function criarConta() {
     const inputs = document.querySelectorAll('#cadastros input');
     let allInputs = true;

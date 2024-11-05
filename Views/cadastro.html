@@ -27,17 +27,18 @@
                         <input type="text" placeholder="Email" required>
                         <input type="text" placeholder="Confirme o email" required>
                         <div class="container_senha">
-                            <input id="input_password" type="password" placeholder="Senha" required>
+                            <input id="input_password" type="password" placeholder="Senha" maxlength="8" required>
                             <span id="icon_password">🙈</span>
                         </div>
                         <div class="container_senha">
-                            <input id="input_confirm_pasword" type="password" placeholder="Confirme a senha" required>
+                            <input id="input_confirm_pasword" type="password" maxlength="8" placeholder="Confirme a senha" required>
                             <span id="icon_confirm_password">🙈</span>
                         </div>
                     </div>
                 </div>
-                <div id="button">
-                    <button onclick="criarConta()">Criar conta</button>
+                <div id="container_buttons">
+                    <button id="button_cancelar">Cancelar</button>
+                    <button id="button_salvar" onclick="criarConta()">Criar conta</button>
                 </div>
             </div>
         </div>
