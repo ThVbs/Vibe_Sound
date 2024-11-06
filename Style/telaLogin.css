@@ -4,9 +4,12 @@
 }
 
 body {
+    width: 100vw;
+    height: 100vh;
     background-color: #6656f8;
     color: #ffff;
     display: flex;
+    align-items: center;
     justify-content: center;
 }
 

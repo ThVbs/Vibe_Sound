@@ -4,9 +4,12 @@
 }
 
 body {
+    width: 100vw;
+    height: 100vh;
     background-color: #6656f8;
     color: #ffff;
     display: flex;
+    align-items: center;
     justify-content: center;
 }
 
@@ -44,11 +47,20 @@ h1 {
 .container_senha {
     position: relative;
     display: flex;
-    align-items: baseline
+    align-items: center
 }
 
 #icon_password, #icon_confirm_password {
     cursor: pointer;
+    position: absolute;
+    right: 10px; 
+    top: 50%;
+    color: #342997;
+    transform: translateY(-20%);
+}
+
+.material-icons {
+    font-size: 17px;
 }
 
 input {

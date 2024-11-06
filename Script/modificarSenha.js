@@ -3,10 +3,10 @@ const iconSenha = document.getElementById('icon_password');
 iconSenha.addEventListener('click', function() {
     if (inputSenha.type === 'password') {
         inputSenha.type = 'text';
-        iconSenha.textContent = '👁️';
+        iconSenha.textContent = 'visibility';
     } else {
         inputSenha.type = 'password';
-        iconSenha.textContent = '🙈';
+        iconSenha.textContent = 'visibility_off';
     }
 });
 
@@ -15,10 +15,10 @@ const iconConfirmarSenha = document.getElementById('icon_confirm_password');
 iconConfirmarSenha.addEventListener('click', function() {
     if (inputConfirmarSenha.type === 'password') {
         inputConfirmarSenha.type = 'text';
-        iconConfirmarSenha.textContent = '👁️';
+        iconConfirmarSenha.textContent = 'visibility';
     } else {
         inputConfirmarSenha.type = 'password';
-        iconConfirmarSenha.textContent = '🙈';
+        iconConfirmarSenha.textContent = 'visibility_off';
     }
 });
 
