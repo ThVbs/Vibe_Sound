@@ -4,7 +4,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Página de Cadastro</title>
+        <!-- Css -->
         <link rel="stylesheet" href="../Style/telaCadastro.css">
+        <!-- Material Icons -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!--Link da fonte do título-->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,15 +27,15 @@
                         <input type="text" id="input_phone_number" placeholder="Telefone" title="Formato do número de telefone: xx xxxxx-xxxx" maxlength="15" required>
                     </div>
                     <div id="cadastro_part2">
-                        <input type="text" placeholder="Email" required>
-                        <input type="text" placeholder="Confirme o email" required>
+                        <input id="input_email" type="text" placeholder="Email" required>
+                        <input id="input_confirm_email" type="text" placeholder="Confirme o email" required>
                         <div class="container_senha">
                             <input id="input_password" type="password" placeholder="Senha" maxlength="8" required>
-                            <span id="icon_password">🙈</span>
+                            <span id="icon_password" class="eye-icon material-icons">visibility_off</span>
                         </div>
                         <div class="container_senha">
                             <input id="input_confirm_pasword" type="password" maxlength="8" placeholder="Confirme a senha" required>
-                            <span id="icon_confirm_password">🙈</span>
+                            <span id="icon_confirm_password" class="eye-icon material-icons">visibility_off</span>
                         </div>
                     </div>
                 </div>

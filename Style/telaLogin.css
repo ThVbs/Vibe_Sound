@@ -44,14 +44,20 @@ h1 {
     flex-direction: column;
 }
 
-#container_senha {
+#container_password {
     position: relative;
     display: flex;
     align-items: baseline
 }
 
-#icon_senha {
+#icon_password {
     cursor: pointer;
+    position: absolute;
+    right: 10px; 
+    top: 50%;
+    color: #342997;
+    transform: translateY(-20%);
+    font-size: 17px; 
 }
 
 input {

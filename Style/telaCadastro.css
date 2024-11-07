@@ -23,6 +23,7 @@ h1 {
     margin-top: 35px;
 }
 
+/* Área do cadastro */
 #container_cadastro {
     width: 59vw;
     height: 65vh;
@@ -37,6 +38,7 @@ h1 {
     margin-left: 55px;
 }
 
+/* Área dos inputs */
 #cadastros {
     display: flex;
     justify-content: space-between;
@@ -64,6 +66,12 @@ h1 {
 
 #icon_password, #icon_confirm_password {
     cursor: pointer;
+    position: absolute;
+    right: 10px; 
+    top: 50%;
+    color: #342997;
+    transform: translateY(-20%);
+    font-size: 17px; 
 }
 
 input {

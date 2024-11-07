@@ -27,7 +27,10 @@ buttonCancelar.addEventListener('click', function() {
     window.location.href = 'login.html';
 });
 
+/* Obtendo referências dos elementos de entrada do frontend */
 const buttonSalvar = document.getElementById('button_salvar');
+
+/* Função para validar se todos os campos do formulário de cadastro foram preenchidos */
 buttonSalvar.addEventListener('click', function() {
     const senha = inputSenha.value;
     const senhaConfirmacao = inputConfirmarSenha.value;
@@ -35,9 +38,9 @@ buttonSalvar.addEventListener('click', function() {
     
     if (!senha || !senhaConfirmacao) {
         alert('Preencha todos os campos');
-      } else if (senha !== senhaConfirmacao) {
+    } else if (senha !== senhaConfirmacao) {
         alert('As senhas precisam ser iguais!');
-      } else {
+    } else {
         window.location.href = 'login.html';
-      }
+    }
 });
