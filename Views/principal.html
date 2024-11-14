@@ -6,16 +6,21 @@
         <title>Página Principal</title>
         <!-- Link CSS -->
         <link rel="stylesheet" href="../Style/telaPrincipal.css">
-    </head>
+        <!-- Link da fonte do texto "Sua Biblioteca" -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+        <!--Fonte texto cadastro e botão criar conta-->
+        <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Quicksand&display=swap" rel="stylesheet">    </head>
     <body>
         <div id="container">
             <div id="top">
                 <div id="perfil">
-                    <img id="logo_vibesound" src="/Image/logoVibesoundMenor.jpg" alt="">
+                    <img id="logo_vibesound" src="/Image/logoVibesoundMenor.jpg">
                 </div>
                 <div id="pesquisa">
                     <button id="button_voltar_inicio">
-                        <img id="icon_inicio" src="/Image/iconInicio.png" alt="">
+                        <img id="icon_inicio" src="/Image/iconInicio.png">
                     </button>
                     <input id="input_pesquisa" type="text" placeholder="O que você quer ouvir?" class="img_pesquisa">
                 </div>
@@ -24,7 +29,20 @@
                 </div>
             </div>
             <div id="area_biblioteca">
-
+                <div id="biblioteca">
+                    <img id="icon_biblioteca" src="/Image/iconBiblioteca.png">
+                    <span id="text_biblioteca">Sua Biblioteca</span>
+                </div>
+                <div id="playlists">
+                    <button class="button_musica_biblioteca">
+                        <img class="img_musica_biblioteca" src="/Image/mais_escutados1.jpeg" alt="imagem da playlist">
+                        <div class="texts_musica_biblioteca">
+                            <p class="titulo_musica_biblioteca">Título da Música</p>
+                            <p class="info_musica_biblioteca">Playlist • Nome do criador</p>
+                        </div>
+                        
+                    </div>
+                </div>
             </div>
             <div id="musics">
 
