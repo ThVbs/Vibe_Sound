@@ -33,6 +33,7 @@ button {
     width: 41px;
     height: 40px;
 }
+
 /* Área de pesquisa */
 #pesquisa {
     margin-top: 15px;
@@ -77,20 +78,28 @@ button {
     background-repeat: no-repeat;
     background-size: 20px 20px;
 }
-
+/* Espaçando as div da biblioteca e músicas */
+#organiza_divs {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 /* Área da Biblioteca */
 #area_biblioteca {
     margin-top: 19px;
     background-color: #1f1f1f;
-    width: 35vw;
-    height: 88vh;
+    width: 24vw;
+    height: 87vh;
     border-radius: 13px;
     margin-left: 10px;
+    overflow-y: auto; 
+    scrollbar-color: #888 #1f1f1f; 
 }
 #biblioteca {
     display: flex;
     align-items: center;
     flex-direction: row;
+    justify-content: space-between;
     padding: 20px;
 }
 #icon_biblioteca {
@@ -102,14 +111,21 @@ button {
     font-size: 25px;
     margin-left: 10px;
 }
+#button_adicionar {
+    background-color: #1f1f1f;
+    border: none;
+    width: 25px;
+    height: 25px;
+}
 .button_musica_biblioteca {
-    width: 33vw;
+    width: 20vw;
     height: 64px;
-    margin-left: 10px;
     display: flex;
     flex-direction: row;
     background-color: #1f1f1f;
     border: none;
+    margin-left: 20px;
+    margin-bottom: 9px;
 }
 .img_musica_biblioteca {
     width: 60px;
@@ -130,6 +146,85 @@ button {
     font-weight: bolder;
     margin-bottom: 5px;
 }
-.info_musica_biblioteca {
-    
+
+/* Área dos campos onde aparecem as músicas e playlists escutadas recentemente */
+#area_musics {
+    margin-top: 19px;
+    background-color: #1f1f1f;
+    width: 74vw;
+    height: 87vh;
+    border-radius: 13px;
+    margin-right: 10px;
+    overflow-y: auto; 
+    scrollbar-color: #888 #1f1f1f; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+/* Área das músicas/playlists escutadas recentemente */
+#frase_recente {
+    margin-top: 23px;
+    width: 70vw;
+    height: 3vh;
+    font-size: 25px;
+    font-family: 'Afacad', sans-serif;
+}
+.field_recents {
+    width: 73vw;
+    height: 18vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 28px;
+}
+.all_field_recents {
+    background-color: #383838;
+    border: none;
+    color: #ffff;
+    width: 16vw;
+    height: 7vh;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    font-weight: 700;
+    margin-right: 20px;
+    border-radius: 5px;
+}
+.img_recent {
+    width: 45px;
+    height: 45px; 
+    margin-left: -5px; 
+    border-radius: 3px; 
+    object-fit: cover;}
+.text_recent {
+    padding: 10px;
+    font-size: 15px;
+}
+
+/* Álbuns populares */
+#frase_populares {
+    margin-top: 25px;
+    width: 70vw;
+    height: 3vh;
+    font-size: 25px;
+    font-family: 'Afacad', sans-serif;
+}
+#field_populares {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+}
+#popular {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 37px;
+    width: 30px;
+    height: 40px;
+}
+#img_popular {
+    width: 149px;
+    height: 145px;
 }
