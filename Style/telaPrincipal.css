@@ -9,6 +9,7 @@ body {
 }
 button {   
     cursor: pointer;
+    border: none;
 }
 
 /* Área de cima */
@@ -46,7 +47,6 @@ button {
 #button_voltar_inicio {
     width: 55px;
     height: 55px;
-    border: none;
     border-radius: 50px;
     background-color: #1f1f1f;
     transition: transform 0.2s ease;
@@ -61,10 +61,10 @@ button {
 }
 #input_pesquisa {
     background-color: #1f1f1f;
+    border: none;
     color: #ffff;
     width: 340px;
     height: 55px;
-    border: none;
     border-radius: 50px;
     font-size: 17px;
 }
@@ -113,7 +113,6 @@ button {
 }
 #button_adicionar {
     background-color: #1f1f1f;
-    border: none;
     width: 25px;
     height: 25px;
 }
@@ -121,22 +120,27 @@ button {
     width: 20vw;
     height: 64px;
     display: flex;
+    align-items: center;
     flex-direction: row;
     background-color: #1f1f1f;
-    border: none;
     margin-left: 20px;
     margin-bottom: 9px;
+    transition: transform 0.2s ease;
+}
+.button_musica_biblioteca:hover {
+    background-color: #221e49;
+    border-radius: 5px;
 }
 .img_musica_biblioteca {
     width: 60px;
     height: 60px;
     border-radius: 5px;
+    margin-left: 4px;
 }
 .texts_musica_biblioteca {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-top: 10px;
     margin-left: 15px;
     font-family: sans-serif;
     color: #ffff;
@@ -166,21 +170,20 @@ button {
 #frase_recente {
     margin-top: 23px;
     width: 70vw;
-    height: 3vh;
+    height: 5vh;
     font-size: 25px;
     font-family: 'Afacad', sans-serif;
 }
 .field_recents {
-    width: 73vw;
+    width: 72vw;
     height: 18vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 28px;
+    margin-top: 10px;
 }
-.all_field_recents {
+.button_tocadas_recente {
     background-color: #383838;
-    border: none;
     color: #ffff;
     width: 16vw;
     height: 7vh;
@@ -189,6 +192,11 @@ button {
     text-align: left;
     font-weight: 700;
     margin-right: 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+.button_tocadas_recente:hover {
+    background-color: #554d99;
     border-radius: 5px;
 }
 .img_recent {
@@ -196,35 +204,96 @@ button {
     height: 45px; 
     margin-left: -5px; 
     border-radius: 3px; 
-    object-fit: cover;}
+    object-fit: cover;
+}
 .text_recent {
     padding: 10px;
     font-size: 15px;
+}
+
+/* Artistas populares */
+#frase_artistas_populares {
+    margin-top: 25px;
+    width: 70vw;
+    height: 5vh;
+    font-size: 25px;
+    font-family: 'Afacad', sans-serif;
+}
+#field_populares {
+    width: 70vw;
+    height: 31vh;
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+}
+#button_artistas_populares {
+    color: #ffff;
+    background-color: #1f1f1f;
+    transition: transform 0.2s ease;
+    width: 12vw;
+    height: 29vh; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 25px;
+}
+#button_artistas_populares:hover {
+    background-color: #221e49;
+    border-radius: 5px;
+}
+#img_artistas_populares {
+    width: 160px;
+    height: 160px; 
+    border-radius: 50%; 
+    object-fit: cover;
+    margin-top: 1px;
+}
+#nome_artistas_populares {
+    margin-top: 5px;
 }
 
 /* Álbuns populares */
 #frase_populares {
     margin-top: 25px;
     width: 70vw;
-    height: 3vh;
+    height: 5vh;
     font-size: 25px;
     font-family: 'Afacad', sans-serif;
 }
 #field_populares {
+    width: 70vw;
+    height: 31vh;
+    margin-top: 10px;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     align-items: center;
-    flex-wrap: wrap;
 }
-#popular {
+#button_popular {
+    color: #ffff;
+    background-color: #1f1f1f;
+    transition: transform 0.2s ease;
+    width: 12vw;
+    height: 31vh; 
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    padding: 37px;
-    width: 30px;
-    height: 40px;
+    align-items: center;
+    margin-right: 25px;
+}
+#button_popular:hover {
+    background-color: #221e49;
+    border-radius: 5px;
+
 }
 #img_popular {
-    width: 149px;
-    height: 145px;
+    width: 160px;
+    height: 160px; 
+    border-radius: 3px; 
+    object-fit: cover;
+    margin-top: 1px;
+}
+#titulo_musica_populares {
+    margin-top: 5px;
 }
