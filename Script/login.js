@@ -16,5 +16,5 @@ iconSenha.addEventListener('click', function() {
 
 /* Evento de clique para validar as entradas */
 buttonAcessar.addEventListener('click', function() {
-    window.location.href = 'inicial.html';
+    window.location.href = 'principal.html';
 });
