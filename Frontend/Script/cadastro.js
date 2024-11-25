@@ -65,7 +65,7 @@ buttonCancelar.addEventListener('click', function() {
 });
 
 /* Função para validar se todos os campos do formulário de cadastro foram preenchidos */
-function criarConta() {
+/*function criarConta() {
     const email = inputEmail.value;
     const emailConfirmacao = inputConfirmarEmail.value;
     const senha = inputSenha.value;
@@ -88,4 +88,38 @@ function criarConta() {
     } else {
         alert('Por favor, preencha todos os campos para depois finalizar o cadastro!');
     }
-}
+}*/
+
+button_criar_conta = document.getElementById("button_criar_conta");
+button_criar_conta.addEventListener("click", async () => {
+    const inputs = document.querySelectorAll('#cadastros input');
+    const data = {
+        nome: inputs[0].value,
+        data_nascimento: inputs[1].value,
+        telefone: inputs[2].value,
+        email: inputs[3].value,
+        senha: inputs[4].value
+    };
+    try {
+        const response = await fetch("/api/registrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+            alert("Cadastro realizado com sucesso");
+            window.location.href = 'login.html';
+        } else {
+            const erroMessage = await response.text();
+            alert("Erro ao cadastrar usuário " + erroMessage);
+        }
+    } catch (erro) {
+        console.erro("Erro na requisição: ", erro);
+        alert("Erro na requisição: " + erro.message);
+    }
+
+    inputs.forEach((item)=>{item.value=""})
+});

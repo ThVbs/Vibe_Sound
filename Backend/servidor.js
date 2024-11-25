@@ -6,6 +6,8 @@ const bcrypt = require("bcrypt")
 const path = require('path')
 
 app.use(express.json());
+const cors = require("cors");
+app.use(cors());
 
 /* Nome do banco de dados criado no pgAdmin: Vibesound
    Nome da tabela: usuarios */
@@ -29,6 +31,62 @@ app.get("/", (req, res) => {
     }
 })
 
+/* Endpoints para cadastrar usuário, fazer login e excluir usuário */
+app.post("/api/registrar", async (req, res) => {
+    try {
+      const { nome, data_nascimento, telefone, email, senha } = req.body;
+      if (!nome || !data_nascimento || !telefone || !senha || !email) {
+        return res.status(400).send("Todos os dados são obrigatórios: " + erro.message);
+      }
+      const hash = await bcrypt.hash(senha, 10);
+      await pool.query(
+        "INSERT INTO usuarios(nome, data_nascimento, telefone, email, senha) VALUES($1, $2, $3, $4, $5)",
+        [nome, data_nascimento, telefone, email, hash]
+      );
+      res.status(201).send("Usuário registrado com sucesso");
+    } catch (erro) {
+      console.erro("Erro ao registrar usuário: ", erro.message);
+      res.status(500).send("Erro ao registrar usuário: " + erro.message );
+    }
+});
+  
+app.post("/api/login", async (req, res) => {
+    try {
+        const { email, senha } = req.body;
+        const result = await pool.query("SELECT * FROM usuarios WHERE email = $1", [email]);
+        if (result.rows.length === 0) {
+        return res.status(404).send("Usuário não encontrado: " + erro.message);
+        }
+        const user = result.rows[0];
+        const validPassword = await bcrypt.compare(senha, user.senha);
+        if (!validPassword) {
+        return res.status(401).send("Senha incorreta: "+erro.message);
+        }
+        res.status(200).send("Login bem-sucedido");
+    } catch (erro) {
+        console.erro("Erro ao fazer login: ", erro.message);
+        res.status(500).send("Erro ao fazer login: " + erro.message);
+    }
+});
+  
+app.delete("/api/deletaruser", async (req, res) => {
+    try {
+        const { id } = req.body;
+        const result = await pool.query("DELETE FROM usuarios WHERE usuario_id = $1 RETURNING *", [id]);
+        if (result.rows.length === 0) {
+        return res.status(404).json({ erro: "Usuário não encontrado" });
+        }
+        res.status(200).send("Usuário excluído com sucesso");
+    } catch (erro) {
+        console.erro("Erro ao excluir usuário: ", erro.message);
+        res.status(500).send("Erro ao excluir usuário" + erro.message);
+    }
+});
+  
+app.listen(PORT,()=>{
+    console.log(`Servidor rodando na porta localhost:${PORT}`)
+})
+
 // Endpoint para mostrar todas as músicas na tela principal
 async function dbSelectMusicas() {
     try {
@@ -49,7 +107,7 @@ app.get("/api/musicas", async (req, res) => {
 });
 
 // Endpoints para o administrador adicionar(post), editar(put) e deletar(delete) a lista de músicas global
-async function dbModeradorAdicionarMusica(titulo, album, duracao, genero, artista, musica_url) {
+async function dbAdicionarMusica(titulo, album, duracao, genero, artista, musica_url) {
     try {
         const respondeDB = await pool.query("INSERT INTO musicas (titulo, album, duracao, genero, artista, musica_url) VALUES ($1,$2,$3,$4,$5,$6)",[titulo, album, duracao, genero, artista, musica_url])
     } catch (erro) {
@@ -59,13 +117,13 @@ async function dbModeradorAdicionarMusica(titulo, album, duracao, genero, artist
 }
 app.post("/api/musicas", async (req, res) => {
     try {
-        // Não há nenhuma verificação de como vem o json do usuário, é interessante ter
-        await dbModeradorAdicionarMusica(
+        await dbAdicionarMusica(
             req.body.titulo,
             req.body.album,
             req.body.duracao,
             req.body.genero,
-            req.body.artista
+            req.body.artista,
+            req.body.musica_url
         );
         res.status(201).send("Música adicionada com sucesso");
     } catch (erro) {
@@ -73,23 +131,23 @@ app.post("/api/musicas", async (req, res) => {
     }
 });
 
-
-async function dbModeradorEditarMusica(id, titulo, artista, album, duracao, musica_url) {
+async function dbEditarMusica(id, titulo, album, duracao, genero, artista, musica_url) {
     try {
-        const responseDB = await pool.query(`UPDATE musicas SET titulo=$2, artista=$3, album=$4, duracao=$5, musica_url=$6 WHERE id = $1;`,[id, titulo, artista, album, duracao, musica_url])
+        const responseDB = await pool.query(`UPDATE musicas SET titulo=$2, album=$3, duracao=$4, genero=$5, artista=$6, musica_url=$7 WHERE id = $1;`,[id, titulo, album, duracao, genero, artista, musica_url])
     } catch (erro) {
         console.log("A consulta retornou o seguinte erro: " + erro.message)
-        throw erro; // Lança o erro para ser tratado no endpoint
+        throw erro;
     }
 }
 app.put("/api/musicas", async (req,res)=>{
     try {
-        await dbModeradorEditarMusica(
+        await dbEditarMusica(
             req.body.id,
             req.body.titulo,
-            req.body.artista,
             req.body.album,
             req.body.duracao,
+            req.body.genero,
+            req.body.artista,
             req.body.musica_url
         );
         res.status(201).send("Musica editada com sucesso")
@@ -98,17 +156,17 @@ app.put("/api/musicas", async (req,res)=>{
     }
 })
 
-async function dbModeradorExcluirMusica(id) {
+async function dbExcluirMusica(id) {
     try {
         const responseDB = await pool.query(`DELETE FROM musicas WHERE id=$1`,[id])
     } catch (erro) {
         console.log("A consulta retornou o seguinte erro: " + erro.message)
-        throw erro; // Lança o erro para ser tratado no endpoint
+        throw erro; 
     }
 }
 app.delete("/api/musicas", async(req,res)=>{
     try {
-        await dbModeradorExcluirMusica(req.body.id)
+        await dbExcluirMusica(req.body.id)
         res.status(201).send("Musica excluida com sucesso")
     } catch (erro) {
         res.status(500).json({ erro: "Erro moderador ao deletar música: " + erro.message })
@@ -122,7 +180,7 @@ async function dbSelectListaUsuario() {
         return responseDB.rows
     } catch (erro) {
         console.log("A consulta retornou o seguinte erro: " + erro.message)
-        throw erro; // Lança o erro para ser tratado no endpoint
+        throw erro; 
     }
 }
 app.get("/api/lista/user", async (req,res)=>{
@@ -144,7 +202,6 @@ async function dbAdicionarMusicaLista(usuario_id, musica_id) {
 }
 app.post("/api/lista/user", async (req, res) => {
     try {
-        // Não há nenhuma verificação de como vem o json do usuário, é interessante ter
         await dbAdicionarMusicaLista(
             req.body.usuario_id,
             req.body.musica_id
@@ -155,13 +212,12 @@ app.post("/api/lista/user", async (req, res) => {
     }
 });
 
-
 async function dbExcluirMusicaLista(id) {
     try {
         const responseDB = await pool.query(`DELETE FROM lista_musicas WHERE id=$1`,[id])
     } catch (erro) {
         console.log("A consulta retornou o seguinte erro: " + erro.message)
-        throw erro; // Lança o erro para ser tratado no endpoint
+        throw erro; 
     }
 }
 app.delete("/api/lista/user", async(req,res)=>{
@@ -171,62 +227,4 @@ app.delete("/api/lista/user", async(req,res)=>{
     } catch (erro) {
         res.status(500).send("Erro moderador ao deletar música: " + erro.message )
     }
-})
-
-
-// Endpoints para cadastrar usuário, fazer login e excluir usuário
-app.post("/api/registrar", async (req, res) => {
-    try {
-      const { nome, senha, email } = req.body;
-      if (!nome || !senha || !email) {
-        return res.status(400).send("Nome de usuário e senha são obrigatórios: " + erro.message);
-      }
-      const hash = await bcrypt.hash(senha, 10);
-      await pool.query(
-        "INSERT INTO usuarios (nome, senha, email) VALUES ($1, $2, $3)",
-        [nome, hash, email]
-      );
-      res.status(201).send("Usuário registrado com sucesso");
-    } catch (erro) {
-      console.erro("Erro ao registrar usuário: ", erro.message);
-      res.status(500).send("Erro ao registrar usuário: " + erro.message );
-    }
-  });
-  
-  app.post("/api/login", async (req, res) => {
-    try {
-      const { email, senha } = req.body;
-      const result = await pool.query("SELECT * FROM usuarios WHERE email = $1", [email]);
-      if (result.rows.length === 0) {
-        return res.status(404).send("Usuário não encontrado: " + erro.message);
-      }
-      const user = result.rows[0];
-      const validPassword = await bcrypt.compare(senha, user.senha);
-      if (!validPassword) {
-        return res.status(401).send("Senha incorreta: "+erro.message);
-      }
-      res.status(200).send("Login bem-sucedido");
-    } catch (erro) {
-      console.erro("Erro ao fazer login: ", erro.message);
-      res.status(500).send("Erro ao fazer login: " + erro.message);
-    }
-  });
-  
-  app.delete("/api/deletaruser", async (req, res) => {
-    try {
-      const { id } = req.body;
-      const result = await pool.query("DELETE FROM usuarios WHERE id = $1 RETURNING *", [id]);
-      if (result.rows.length === 0) {
-        return res.status(404).json({ erro: "Usuário não encontrado" });
-      }
-      res.status(200).send("Usuário excluído com sucesso");
-    } catch (erro) {
-      console.erro("Erro ao excluir usuário: ", erro.message);
-      res.status(500).send("Erro ao excluir usuário"+erro.message);
-    }
-  });
-  
-
-app.listen(PORT,()=>{
-    console.log(`Servidor rodando na porta localhost:${PORT}`)
 })

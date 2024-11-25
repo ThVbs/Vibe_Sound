@@ -18,3 +18,4 @@ iconSenha.addEventListener('click', function() {
 buttonAcessar.addEventListener('click', function() {
     window.location.href = 'principal.html';
 });
+
