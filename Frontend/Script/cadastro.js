@@ -64,44 +64,37 @@ buttonCancelar.addEventListener('click', function() {
     window.location.href = 'login.html';
 });
 
-/* Função para validar se todos os campos do formulário de cadastro foram preenchidos */
-/*function criarConta() {
-    const email = inputEmail.value;
-    const emailConfirmacao = inputConfirmarEmail.value;
-    const senha = inputSenha.value;
-    const senhaConfirmacao = inputConfirmarSenha.value;
-    const inputs = document.querySelectorAll('#cadastros input');
-
-    let allInputs = true;
-    inputs.forEach(input => {
-        if (input.value.trim() === '') {
-            allInputs = false;
-        }
-    });
-
-    if (email !== emailConfirmacao) {
-        alert('Os emails precisam ser iguais!');
-    } else if (senha !== senhaConfirmacao) {
-        alert('As senhas precisam ser iguais!');
-    } else if (allInputs) {
-        window.location.href = 'login.html';
-    } else {
-        alert('Por favor, preencha todos os campos para depois finalizar o cadastro!');
-    }
-}*/
-
 button_criar_conta = document.getElementById("button_criar_conta");
 button_criar_conta.addEventListener("click", async () => {
     const inputs = document.querySelectorAll('#cadastros input');
+    const email = inputs[3].value;
+    const confirmEmail = inputs[4].value;
+    const senha = inputs[5].value;
+    const confirmSenha = inputs[6].value;
+
+    if (email !== confirmEmail) {
+        alert("Os emails não coincidem. Por favor, tente novamente.");
+        return; 
+    }
+    if (senha !== confirmSenha) {
+        alert("As senhas não coincidem. Por favor, tente novamente.");
+        return; 
+    }
+
     const data = {
         nome: inputs[0].value,
         data_nascimento: inputs[1].value,
         telefone: inputs[2].value,
-        email: inputs[3].value,
-        senha: inputs[4].value
+        email: email,
+        senha: senha
     };
+    if (!data.nome || !data.data_nascimento || !data.telefone || !data.email || !data.senha) {
+        alert("Todos os campos são obrigatórios.");
+        return;
+    }
+    
     try {
-        const response = await fetch("/api/registrar", {
+        const response = await fetch("/api/cadastrar", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -113,13 +106,12 @@ button_criar_conta.addEventListener("click", async () => {
             alert("Cadastro realizado com sucesso");
             window.location.href = 'login.html';
         } else {
-            const erroMessage = await response.text();
-            alert("Erro ao cadastrar usuário " + erroMessage);
+            alert("Erro ao cadastrar usuário.");
         }
     } catch (erro) {
-        console.erro("Erro na requisição: ", erro);
+        console.error("Erro na requisição: ", erro);
         alert("Erro na requisição: " + erro.message);
     }
 
-    inputs.forEach((item)=>{item.value=""})
+    inputs.forEach((item) => { item.value = ""; });
 });

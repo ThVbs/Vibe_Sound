@@ -5,7 +5,9 @@ const pg = require("pg")
 const bcrypt = require("bcrypt")
 const path = require('path')
 
+app.use(express.static(path.join(__dirname, "../Frontend")))
 app.use(express.json());
+
 const cors = require("cors");
 app.use(cors());
 
@@ -15,7 +17,7 @@ const { Pool } = require("pg");
 const pool = new Pool({
     user: "postgres",
     host: "localhost",
-    database: "Vibesound", /*nome do banco de dados criado no postgres/pgAdmin */
+    database: "Vibesound",
     password: "postgres",
     port: 5432,
     max: 5,
@@ -30,45 +32,110 @@ app.get("/", (req, res) => {
         res.status(418).send(`Erro de conexão: ${erro.message}`);
     }
 })
-
-/* Endpoints para cadastrar usuário, fazer login e excluir usuário */
-app.post("/api/registrar", async (req, res) => {
+app.get("/login.html", (req, res) => {
     try {
-      const { nome, data_nascimento, telefone, email, senha } = req.body;
-      if (!nome || !data_nascimento || !telefone || !senha || !email) {
-        return res.status(400).send("Todos os dados são obrigatórios: " + erro.message);
-      }
-      const hash = await bcrypt.hash(senha, 10);
-      await pool.query(
-        "INSERT INTO usuarios(nome, data_nascimento, telefone, email, senha) VALUES($1, $2, $3, $4, $5)",
-        [nome, data_nascimento, telefone, email, hash]
-      );
-      res.status(201).send("Usuário registrado com sucesso");
+        res.sendFile(path.join(__dirname, "../Frontend/Views/login.html"));
+    } 
+    catch(erro) {
+        res.status(418).send(`Erro de conexão: ${erro.message}`);
+    }
+})
+app.get("/cadastro.html", (req, res) => {
+    try {
+        res.sendFile(path.join(__dirname, "../Frontend/Views/cadastro.html"));
+    } 
+    catch(erro) {
+        res.status(418).send(`Erro de conexão: ${erro.message}`);
+    }
+})
+app.get("/modificarSenha.html", (req, res) => {
+    try {
+        res.sendFile(path.join(__dirname, "../Frontend/Views/modificarSenha.html"));
+    } 
+    catch(erro) {
+        res.status(418).send(`Erro de conexão: ${erro.message}`);
+    }
+})
+app.get("/principal.html", (req, res) => {
+    try {
+        res.sendFile(path.join(__dirname, "../Frontend/Views/principal.html"));
+    } 
+    catch(erro) {
+        res.status(418).send(`Erro de conexão: ${erro.message}`);
+    }
+})
+app.get("/reproduzir_musica.html", (req, res) => {
+    try {
+        res.sendFile(path.join(__dirname, "../Frontend/Views/reproduzir_musica.html"));
+    } 
+    catch(erro) {
+        res.status(418).send(`Erro de conexão: ${erro.message}`);
+    }
+})
+
+/* Método para cadastrar Usuário */
+app.post("/api/cadastrar", async (req, res) => {
+    try {
+        const { nome, data_nascimento, telefone, email, senha, confirm_email, confirm_senha } = req.body;
+
+        if (!nome || !data_nascimento || !telefone || !senha || !email) {
+            return res.status(400).send("Todos os dados são obrigatórios.");
+        }
+
+        if (email !== confirm_email) {
+            return res.status(400).send("Os emails não coincidem.");
+        }
+        if (senha !== confirm_senha) {
+            return res.status(400).send("As senhas não coincidem.");
+        }
+
+        await pool.query(
+            "INSERT INTO usuarios(nome, data_nascimento, telefone, email, senha) VALUES($1, $2, $3, $4, $5)",
+            [nome, data_nascimento, telefone, email, senha]
+        );
+
+        res.status(201).send("Usuário registrado com sucesso");
+
     } catch (erro) {
-      console.erro("Erro ao registrar usuário: ", erro.message);
-      res.status(500).send("Erro ao registrar usuário: " + erro.message );
+        console.error("Erro ao registrar usuário: ", erro.message);
+        res.status(500).send("Erro ao registrar usuário");
     }
 });
-  
-app.post("/api/login", async (req, res) => {
+
+/* Método para acessar usuário */
+app.post("/api/acessar", async (req, res) => {
     try {
         const { email, senha } = req.body;
+
+        if (!email || !senha) {
+            return res.status(400).json({ message: "Email e senha são obrigatórios!" });
+        }
+
         const result = await pool.query("SELECT * FROM usuarios WHERE email = $1", [email]);
         if (result.rows.length === 0) {
-        return res.status(404).send("Usuário não encontrado: " + erro.message);
+            return res.status(404).json({ message: "Usuário não encontrado" });
         }
+
         const user = result.rows[0];
-        const validPassword = await bcrypt.compare(senha, user.senha);
-        if (!validPassword) {
-        return res.status(401).send("Senha incorreta: "+erro.message);
+
+        if (user.senha !== senha) {
+            return res.status(401).json({ message: "Senha incorreta!" });
         }
-        res.status(200).send("Login bem-sucedido");
+
+        res.status(200).json({
+            message: "Login bem-sucedido",
+            user: { id: user.id, email: user.email }
+        });
+
     } catch (erro) {
-        console.erro("Erro ao fazer login: ", erro.message);
-        res.status(500).send("Erro ao fazer login: " + erro.message);
+        console.error("Erro ao fazer login: ", erro.message);
+        res.status(500).json({
+            message: "Erro ao fazer login",
+            error: erro.message
+        });
     }
 });
-  
+
 app.delete("/api/deletaruser", async (req, res) => {
     try {
         const { id } = req.body;
