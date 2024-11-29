@@ -74,7 +74,7 @@ app.get("/reproduzir_musica.html", (req, res) => {
 })
 
 /* Método para cadastrar Usuário */
-app.post("/api/cadastrar", async (req, res) => {
+app.post("/cadastro.html", async (req, res) => {
     try {
         const { nome, data_nascimento, telefone, email, senha, confirm_email, confirm_senha } = req.body;
 

@@ -5,7 +5,7 @@ O trabalho foi realizado em dupla, com as integrantes Sofia Ferreira Pereira e A
 
 ### Para rodar o servidor, entrar no terminal através da pasta "Backend" e rodar os seguintes comando:
 - **npm i express**
-- **npm i pg**
 - **npm i path**
-- **npm i bcrypt**
 - **npm install cors**
+- **npm i pg**
+- **npm i bcrypt**
