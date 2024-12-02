@@ -21,18 +21,31 @@ button {
     align-items: center;
     justify-content: space-between;
 }
-#perfil {
+#area_logo {
     display: flex;
     margin-left: 20px;
     justify-content: center;
     align-items: center;
-    margin-top: 10px;
+    margin-top: 19px;
 }
 #logo_vibesound {
-    border-radius: 50px;
-    /* object-fit: cover; */
-    width: 41px;
-    height: 40px;
+    border-radius: 50%;
+    object-fit: cover; 
+    width: 53px;
+    height: 53px;
+}
+#area_perfil {
+    display: flex;
+    margin-right: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 19px;
+}
+#img_pefil {
+    border-radius: 50%; 
+    object-fit: cover; 
+    width: 53px;
+    height: 53px;
 }
 
 /* Área de pesquisa */

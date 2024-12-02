@@ -94,7 +94,8 @@ button_criar_conta.addEventListener("click", async () => {
     }
     
     try {
-        const response = await fetch("/api/cadastrar", {
+        const url = "/api/cadastrar"
+        const response = await fetch(url, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -113,5 +114,5 @@ button_criar_conta.addEventListener("click", async () => {
         alert("Erro na requisição: " + erro.message);
     }
 
-    inputs.forEach((item) => { item.value = ""; });
+    //inputs.forEach((item) => { item.value = ""; });
 });

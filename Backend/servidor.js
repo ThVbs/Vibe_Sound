@@ -1,4 +1,5 @@
 const express = require("express")
+const cors = require("cors");
 const app = express()
 const PORT = 3000;
 const pg = require("pg")
@@ -7,9 +8,8 @@ const path = require('path')
 
 app.use(express.static(path.join(__dirname, "../Frontend")))
 app.use(express.json());
-
-const cors = require("cors");
 app.use(cors());
+
 
 /* Nome do banco de dados criado no pgAdmin: Vibesound
    Nome da tabela: usuarios */
@@ -74,27 +74,23 @@ app.get("/reproduzir_musica.html", (req, res) => {
 })
 
 /* Método para cadastrar Usuário */
-app.post("/cadastro.html", async (req, res) => {
+app.post("/api/cadastrar", async (req, res) => {
     try {
-        const { nome, data_nascimento, telefone, email, senha, confirm_email, confirm_senha } = req.body;
+        const { nome, data_nascimento, telefone, email, senha } = req.body;
 
         if (!nome || !data_nascimento || !telefone || !senha || !email) {
             return res.status(400).send("Todos os dados são obrigatórios.");
         }
 
-        if (email !== confirm_email) {
-            return res.status(400).send("Os emails não coincidem.");
-        }
-        if (senha !== confirm_senha) {
-            return res.status(400).send("As senhas não coincidem.");
-        }
-
-        await pool.query(
-            "INSERT INTO usuarios(nome, data_nascimento, telefone, email, senha) VALUES($1, $2, $3, $4, $5)",
+        const result = await pool.query(
+            "INSERT INTO usuarios(nome, data_nascimento, telefone, email, senha) VALUES($1, $2, $3, $4, $5) RETURNING *",
             [nome, data_nascimento, telefone, email, senha]
         );
 
-        res.status(201).send("Usuário registrado com sucesso");
+        res.status(201).json({
+            message: "Usuário registrado com sucesso",
+            user: result.rows[0]
+        });
 
     } catch (erro) {
         console.error("Erro ao registrar usuário: ", erro.message);
