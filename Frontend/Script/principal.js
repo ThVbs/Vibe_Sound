@@ -54,7 +54,7 @@ function carregarPlaylistSertanejo() {
                     <span id="text_titulo_musica">Deslumbrante</span>
                 </div>
                 <span>Hugo & Guilherme</span>
-                <span>2:56</span>
+                <span>2:59</span>
             </div>
             <div id="musicas" onclick="abrirMusicaSeuOposto()">
                 <div id="img_titulo">
@@ -80,10 +80,87 @@ function carregarPlaylistSertanejo() {
                 <span>Zé Neto & Cristiano</span>
                 <span>2:39</span>
             </div>
+            <div id="musicas" onclick="abrirMusicaDeuMoral()">
+                <div id="img_titulo">
+                    <img id="img_musica" src="../Image/imgDeuModal.jpg" alt="">
+                    <span id="text_titulo_musica">Deu Moral</span>
+                </div>
+                <span>Zé Neto & Cristiano</span>
+                <span>2:05</span>
+            </div>
         </div>
     `;
 }
 
+function carregarZeNetoCristiano() {
+  const areaMusics = document.getElementById('area_musics');
+  areaMusics.innerHTML = `
+      <div id="area_musica">
+          <img id="img_sertanejo" src="../Image/zeNetoCristiano.jpg" alt="Foto da playlist">
+          <div id="info_musica">
+              <p id="text_sertanejo">Dupla</p>
+              <h1 id="nome_sertanejo">Zé Neto & Cristiano</h1>
+          </div>
+      </div>
+      <div id="area_musicas_album">
+          <div id="musica_dupla_znc">
+              <h3 id="musica_znc">Músicas da Dupla Zé Neto & Cristiano</h3>
+          </div>
+          <div id="infos_musicas">
+              <span id="titulo">Título</span>
+              <span>Duração</span>
+          </div>
+          <div id="linha_separadora"></div>
+          <div id="musicas" onclick="abrirMusicaMeBloqueia()">
+              <div id="img_titulo">
+                  <img id="img_musica" src="../Image/imgMeBloqueia.jpg" alt="">
+                  <span id="text_titulo_musica">Me Bloqueia</span>
+              </div>
+              <span>2:39</span>
+          </div>
+          <div id="musicas" onclick="abrirMusicaDeuMoral()">
+              <div id="img_titulo">
+                  <img id="img_musica" src="../Image/imgDeuModal.jpg" alt="">
+                  <span id="text_titulo_musica">Deu Moral</span>
+              </div>
+              <span>2:05</span>
+          </div>
+      </div>
+  `;
+}
+
+function abrirMusicaDeuMoral() {
+  const areaMusics = document.getElementById('area_musics');
+  areaMusics.innerHTML = `
+      <div id="reproducao_musica">
+          <p id="nome_pasta">Sertanejo</p>
+          <div id="reproducao">
+              <img src="../Image/imgDeuModal.jpg" alt="" id="img_play">
+              <p id="nome_musica">Deu Modal</p>
+              <p id="nome_cantor">Zé Neto & Cristiano</p>
+          </div>
+          <audio id="play" controls>
+              <source src="../Musicas/OCeuExplicaTudo.mp3" type="audio/mpeg">
+          </audio>            
+      </div>
+  `
+}
+function abrirMusicaCeuExplicaTudo() {
+  const areaMusics = document.getElementById('area_musics');
+  areaMusics.innerHTML = `
+      <div id="reproducao_musica">
+          <p id="nome_pasta">Sertanejo</p>
+          <div id="reproducao">
+              <img src="../Image/recent1.jpeg" alt="" id="img_play">
+              <p id="nome_musica">O Céu Explica Tudo</p>
+              <p id="nome_cantor">Henrique e Juliano</p>
+          </div>
+          <audio id="play" controls>
+              <source src="../Musicas/OCeuExplicaTudo.mp3" type="audio/mpeg">
+          </audio>            
+      </div>
+  `
+}
 function abrirMusicaDeslumbrante() {
     const areaMusics = document.getElementById('area_musics');
     areaMusics.innerHTML = `

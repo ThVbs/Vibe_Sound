@@ -85,7 +85,7 @@
                 <div id="area_musics">
                     <p id="frase_recente">Recentes</p>
                     <div class="field_recents">
-                        <button class="button_tocadas_recente">
+                        <button class="button_tocadas_recente" onclick="abrirMusicaCeuExplicaTudo()">
                             <img src="../Image/recent1.jpeg" alt="" class="img_recent">
                             <p class="text_recent">O céu explica tudo (Ao vivo)</p>
                         </button>
@@ -109,7 +109,7 @@
                             <img src="../Image/recent6.jpeg" alt="" class="img_recent">
                             <p class="text_recent">CPM 22</p>
                         </button>
-                        <button class="button_tocadas_recente">
+                        <button class="button_tocadas_recente" onclick="carregarPlaylistSertanejo()">
                             <img src="../Image/mais_escutados1.jpeg" alt="" class="img_recent">
                             <p class="text_recent">Sertanejo</p>
                         </button>
@@ -120,17 +120,17 @@
                     </div>
                     <p id="frase_artistas_populares">Artistas populares</p>
                     <div id="field_populares">
-                        <button id="button_artistas_populares">
-                            <img src="../Image/mais_escutados1.jpeg" alt="" id="img_artistas_populares">
-                            <p id="nome_artistas_populares">Sertanejo</p>
+                        <button id="button_artistas_populares" onclick="carregarZeNetoCristiano()">
+                            <img src="../Image/zeNetoCristiano.jpg" alt="" id="img_artistas_populares">
+                            <p id="nome_artistas_populares">Zé Neto & Cristiano</p>
                         </button>
                         <button id="button_artistas_populares">
                             <img src="../Image/mais_escutados2.jpeg" alt="" id="img_artistas_populares">
                             <p id="nome_artistas_populares">CPM 22</p>
                         </button>
                         <button id="button_artistas_populares">
-                            <img src="../Image/mais_escutados3.jpeg" alt="" id="img_artistas_populares">
-                            <p id="nome_artistas_populares">Funk</p>
+                            <img src="../Image/zecaPagodinho.jpg" alt="" id="img_artistas_populares">
+                            <p id="nome_artistas_populares">Zeca Pagodinho</p>
                         </button>
                         <button id="button_artistas_populares">
                             <img src="../Image/mais_escutados4.jpeg" alt="" id="img_artistas_populares">
@@ -144,8 +144,8 @@
                     <p id="frase_populares">Álbuns populares</p>
                     <div id="field_populares">
                         <button id="button_popular">
-                            <img src="../Image/mais_escutados1.jpeg" alt="" id="img_popular">
-                            <p id="titulo_musica_populares">Mix de Henrique & Juliano</p>
+                            <img src="../Image/mais_escutados1.jpeg" onclick="carregarPlaylistSertanejo()" alt="" id="img_popular">
+                            <p id="titulo_musica_populares">Sertanejo</p>
                         </button>
                         <button id="button_popular">
                             <img src="../Image/mais_escutados2.jpeg" alt="" id="img_popular">

@@ -419,7 +419,7 @@ button {
 }
 #area_musicas_album {
     background-color: #1f1f1f;
-    width: 74vw;
+    width: 71vw;
     height: 57vh;
 }
 #infos_musicas {
@@ -484,4 +484,14 @@ button {
 }
 #play {
     margin-top: 25px;
+}
+
+#musica_dupla_znc {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+#musica_znc {
+    font-size: 15px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
