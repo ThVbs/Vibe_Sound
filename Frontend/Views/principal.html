@@ -11,7 +11,8 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
         <!--Fonte texto cadastro e botão criar conta-->
-        <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Quicksand&display=swap" rel="stylesheet">    </head>
+        <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Quicksand&display=swap" rel="stylesheet">
+    </head>
     <body>
         <div id="container">
             <div id="top">
@@ -24,9 +25,13 @@
                     </button>
                     <input id="input_pesquisa" type="text" placeholder="O que você quer ouvir?" class="img_pesquisa">
                 </div>
-                <div id="area_perfil">
-                    <img id="img_pefil" src="../Image/perfil.png">
-                </div>                
+                <div class="user-container">
+                    <img src="../Image/perfil.png" alt="Avatar" id="img_pefil" onclick="toggleMenu()" />
+                    <div id="dropdownMenu" class="menu hidden">
+                        <a href="javascript:void(0)" onclick="carregarPerfil()">Perfil</a>
+                        <a href="./login.html">Sair</a>
+                      </div>                      
+                </div>
             </div>
             <div id="organiza_divs">
                 <div id="area_biblioteca">
@@ -40,60 +45,39 @@
                         </button>
                     </div>
                     <div id="playlists">
-                        <button class="button_musica_biblioteca">
+                        <button class="button_musica_biblioteca" onclick="carregarPlaylistSertanejo()">
                             <img class="img_musica_biblioteca" src="../Image/mais_escutados1.jpeg" alt="imagem da playlist">
                             <div class="texts_musica_biblioteca">
-                                <p class="titulo_musica_biblioteca">Título da Música</p>
-                                <p class="info_musica_biblioteca">Playlist • Nome do criador</p>
+                                <p class="titulo_musica_biblioteca">Sertanejo</p>
+                                <p class="info_musica_biblioteca">Playlist • Sofia Ferreira</p>
                             </div>
                         </button>
-                        <button class="button_musica_biblioteca">
-                            <img class="img_musica_biblioteca" src="../Image/mais_escutados2.jpeg" alt="imagem da playlist">
+                        <button class="button_musica_biblioteca" onclick="abrirMusicaMeBloqueia()">
+                            <img class="img_musica_biblioteca" src="../Image/imgMeBloqueia.jpg" alt="imagem da playlist">
                             <div class="texts_musica_biblioteca">
-                                <p class="titulo_musica_biblioteca">Título da Música</p>
-                                <p class="info_musica_biblioteca">Playlist • Nome do criador</p>
+                                <p class="titulo_musica_biblioteca">Me Bloqueia</p>
+                                <p class="info_musica_biblioteca">Música • Zé Neto & Cristiano</p>
                             </div>
                         </button>
-                        <button class="button_musica_biblioteca">
-                            <img class="img_musica_biblioteca" src="../Image/mais_escutados3.jpeg" alt="imagem da playlist">
+                        <button class="button_musica_biblioteca" onclick="abrirMusicaMediaBoa()">
+                            <img class="img_musica_biblioteca" src="../Image/imgMediaBoa.jpeg" alt="imagem da playlist">
                             <div class="texts_musica_biblioteca">
-                                <p class="titulo_musica_biblioteca">Título da Música</p>
-                                <p class="info_musica_biblioteca">Playlist • Nome do criador</p>
+                                <p class="titulo_musica_biblioteca">Média Boa</p>
+                                <p class="info_musica_biblioteca">Música • Felipe e Rodrigo</p>
                             </div>
                         </button>
-                        <button class="button_musica_biblioteca">
-                            <img class="img_musica_biblioteca" src="../Image/mais_escutados4.jpeg" alt="imagem da playlist">
+                        <button class="button_musica_biblioteca" onclick="abrirMusicaSeuOposto()">
+                            <img class="img_musica_biblioteca" src="../Image/imgSeuOposto.jpeg" alt="imagem da playlist">
                             <div class="texts_musica_biblioteca">
-                                <p class="titulo_musica_biblioteca">Título da Música</p>
-                                <p class="info_musica_biblioteca">Playlist • Nome do criador</p>
+                                <p class="titulo_musica_biblioteca">Seu Oposto</p>
+                                <p class="info_musica_biblioteca">Música • George & Rodrigo</p>
                             </div>
                         </button>
-                        <button class="button_musica_biblioteca">
-                            <img class="img_musica_biblioteca" src="../Image/mais_escutados5.jpeg" alt="imagem da playlist">
+                        <button class="button_musica_biblioteca" onclick="abrirMusicaDeslumbrante()">
+                            <img class="img_musica_biblioteca" src="../Image/imgDeslumbrante.jpeg" alt="imagem da playlist">
                             <div class="texts_musica_biblioteca">
-                                <p class="titulo_musica_biblioteca">Título da Música</p>
-                                <p class="info_musica_biblioteca">Playlist • Nome do criador</p>
-                            </div>
-                        </button>
-                        <button class="button_musica_biblioteca">
-                            <img class="img_musica_biblioteca" src="../Image/mais_escutados6.jpeg" alt="imagem da playlist">
-                            <div class="texts_musica_biblioteca">
-                                <p class="titulo_musica_biblioteca">Título da Música</p>
-                                <p class="info_musica_biblioteca">Playlist • Nome do criador</p>
-                            </div>
-                        </button>
-                        <button class="button_musica_biblioteca">
-                            <img class="img_musica_biblioteca" src="" alt="imagem da playlist">
-                            <div class="texts_musica_biblioteca">
-                                <p class="titulo_musica_biblioteca">Título da Música</p>
-                                <p class="info_musica_biblioteca">Playlist • Nome do criador</p>
-                            </div>
-                        </button>
-                        <button class="button_musica_biblioteca">
-                            <img class="img_musica_biblioteca" src="" alt="imagem da playlist">
-                            <div class="texts_musica_biblioteca">
-                                <p class="titulo_musica_biblioteca">Título da Música</p>
-                                <p class="info_musica_biblioteca">Playlist • Nome do criador</p>
+                                <p class="titulo_musica_biblioteca">Deslumbrante</p>
+                                <p class="info_musica_biblioteca">Música • Hugo & Guilherme</p>
                             </div>
                         </button>
                     </div>
@@ -114,8 +98,8 @@
                             <p class="text_recent">Funk challenge</p>
                         </button>
                         <button class="button_tocadas_recente">
-                            <img src="../Image/recent4.jpeg" alt="" class="img_recent">
-                            <p class="text_recent">Henrique e Juliano</p>
+                            <img src="../Image/imgMediaBoa.jpeg" alt="" class="img_recent">
+                            <p class="text_recent">Média Boa</p>
                         </button>
                         <button class="button_tocadas_recente">
                             <img src="../Image/recent5.jpeg" alt="" class="img_recent">
@@ -126,8 +110,8 @@
                             <p class="text_recent">CPM 22</p>
                         </button>
                         <button class="button_tocadas_recente">
-                            <img src="../Image/recent3.jpeg" alt="" class="img_recent">
-                            <p class="text_recent">Funk challenge</p>
+                            <img src="../Image/mais_escutados1.jpeg" alt="" class="img_recent">
+                            <p class="text_recent">Sertanejo</p>
                         </button>
                         <button class="button_tocadas_recente">
                             <img src="../Image/recent4.jpeg" alt="" class="img_recent">
@@ -138,15 +122,15 @@
                     <div id="field_populares">
                         <button id="button_artistas_populares">
                             <img src="../Image/mais_escutados1.jpeg" alt="" id="img_artistas_populares">
-                            <p id="nome_artistas_populares">Nome artista</p>
+                            <p id="nome_artistas_populares">Sertanejo</p>
                         </button>
                         <button id="button_artistas_populares">
                             <img src="../Image/mais_escutados2.jpeg" alt="" id="img_artistas_populares">
-                            <p id="nome_artistas_populares">Nome artista</p>
+                            <p id="nome_artistas_populares">CPM 22</p>
                         </button>
                         <button id="button_artistas_populares">
                             <img src="../Image/mais_escutados3.jpeg" alt="" id="img_artistas_populares">
-                            <p id="nome_artistas_populares">Nome artista</p>
+                            <p id="nome_artistas_populares">Funk</p>
                         </button>
                         <button id="button_artistas_populares">
                             <img src="../Image/mais_escutados4.jpeg" alt="" id="img_artistas_populares">

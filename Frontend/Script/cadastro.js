@@ -94,7 +94,7 @@ button_criar_conta.addEventListener("click", async () => {
     }
     
     try {
-        const url = "/api/cadastrar"
+        const url = "/api/cadastrar" 
         const response = await fetch(url, {
             method: "POST",
             headers: {
